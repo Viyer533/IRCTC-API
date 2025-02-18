@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'irctc_api' 
+    'irctc_api', 
 ]
 
 MIDDLEWARE = [
@@ -85,7 +85,7 @@ DATABASES = {
     # }
     'default': {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "irctc_db",
+        "NAME": "irctc_schema",
         "USER": "root",
         "PASSWORD": "mysql123",
         "HOST": "127.0.0.1",
@@ -136,3 +136,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "/"
+
+AUTH_USER_MODEL = 'irctc_api.CustomUser'
