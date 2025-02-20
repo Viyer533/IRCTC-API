@@ -138,3 +138,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "/"
 
 AUTH_USER_MODEL = 'irctc_api.CustomUser'
+
+ADMIN_API_KEY = "your-secure-admin-key"
+
+load_dotenv()  # Load .env variables
+
+ADMIN_API_KEY = os.getenv("ADMIN_API_KEY", "fallback-api-key")

@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate
 from django.db import transaction
+from django.views import View
 from irctc_api.models import Train, Ticket
 from django.db import transaction
 from rest_framework.views import APIView
@@ -13,19 +14,22 @@ from rest_framework.authtoken.models import Token
 
 User = get_user_model()
 # Create your views here.
+
+
 class user_reg(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
         username = request.data.get('username')
         password = request.data.get('password')
-        is_admin = request.data.get('is_admin', False)
+        # is_admin = request.data.get('is_admin', False)
+        email = request.data.get('email')
 
         if User.objects.filter(username=username).exists():
             return Response({"error": "User already exists"}, status=400)
-
-        user = User.objects.create_user(username=username, password=password)
-        user.is_admin = is_admin
+    
+        user = User.objects.create_user(username=username, password=password, email=email)
+        # user.is_admin = is_admin
         user.save()
         
         return Response({"message": "User registered successfully!"})
@@ -38,8 +42,9 @@ class user_login (APIView):
         password = request.data.get('password')
         user = authenticate(username=username, password=password)
         if user:
-            token, created = Token.objects.get_or_create(user=user)
-            return Response({"token": token.key})
+            return Response({"message": "User logged in successfully"}, status=200)
+            # token, created = Token.objects.get_or_create(user=user)
+            # return Response({"token": token.key})
         return Response({"error": "Invalid credentials"}, status=400)
 
 class add_train (APIView):
