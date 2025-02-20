@@ -10,10 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 # import pymysql
-
+load_dotenv()
 # pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -139,8 +140,8 @@ LOGIN_REDIRECT_URL = "/"
 
 AUTH_USER_MODEL = 'irctc_api.CustomUser'
 
-ADMIN_API_KEY = "your-secure-admin-key"
+SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 
-load_dotenv()  # Load .env variables
+ADMIN_API_KEY = os.getenv("ADMIN_API_KEY", "default-api-key")
 
-ADMIN_API_KEY = os.getenv("ADMIN_API_KEY", "fallback-api-key")
+DEBUG = os.getenv("DEBUG", "False") == "True"
