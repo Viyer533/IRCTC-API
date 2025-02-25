@@ -7,7 +7,7 @@ This is a Django-based IRCTC Clone project that requires a MySQL database connec
 ### 1. Clone the Repository
 
 ```sh
-git clone [](https://github.com/Viyer533/IRCTC-API/)
+git clone [IRCTC-API](https://github.com/Viyer533/IRCTC-API/)
 cd irctc_clone
 ```
 
