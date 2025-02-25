@@ -2,22 +2,12 @@
 
 This is a Django-based IRCTC Clone project that requires a MySQL database connection.
 
-## Prerequisites
-
-Ensure you have the following installed before setting up the project:
-
-- Python (>=3.8)
-- Django (Check `requirements.txt` for the version)
-- MySQL Server
-- pip (Python package manager)
-- Virtual environment (`venv`)
-
 ## Installation and Setup
 
 ### 1. Clone the Repository
 
 ```sh
-git clone <repository-url>
+git clone [](https://github.com/Viyer533/IRCTC-API/)
 cd irctc_clone
 ```
 
